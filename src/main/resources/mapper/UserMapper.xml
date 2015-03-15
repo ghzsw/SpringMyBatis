@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.test.domain.User" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+  </resultMap>
+
+    <sql id="BASE_Colum">
+
+        ID,NAME,AGE
+    </sql>
+
+
+  <select id="queryByUser" resultMap="BaseResultMap" parameterType="com.test.domain.User" >
+    select 
+    <include refid="BASE_Colum" />
+    from
+      user
+    where ID = #{user}
+  </select>
+
+
+    <select id="getAll" resultType="com.test.domain.User">
+
+      SELECT
+        <include refid="BASE_Colum"/>
+      FROM
+        user
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="com.test.domain.User" >
+    DELETE
+    FROM
+      user
+    WHERE ID = #{id}
+  </delete>
+
+
+
+  <insert id="insert" parameterType="com.test.domain.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="age != null" >
+        AGE
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER}
+      </if>
+
+    </trim>
+  </insert>
+
+  <update id="updateUser" parameterType="com.test.domain.User" >
+    update user
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>
