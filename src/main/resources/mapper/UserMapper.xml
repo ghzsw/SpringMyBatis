@@ -77,31 +77,31 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
         <if test="id != null" >
-            id,
+            #{id},
         </if>
         <if test="name != null" >
-            name,
+            #{name},
         </if>
         <if test="email != null" >
-            email,
+            #{email},
         </if>
         <if test="sex != null" >
-            sex,
+            #{sex},
         </if>
         <if test="address != null" >
-            address,
+            #{address},
         </if>
         <if test="accout != null" >
-            accout,
+            #{accout},
         </if>
         <if test="password != null" >
-            password,
+            #{password},
         </if>
         <if test="phone != null" >
-            phone,
+            #{phone},
         </if>
         <if test="qq != null" >
-            qq
+            #{qq}
         </if>
 
     </trim>
