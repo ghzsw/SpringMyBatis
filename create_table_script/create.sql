@@ -10,7 +10,7 @@ create table USER (
   name VARCHAR (255) NOT NULL,
   email VARCHAR (255) NOT NULL ,
   password VARCHAR (255) NOT NULL ,
-  accout VARCHAR (255) NOT NULL ,
+  account VARCHAR (255) NOT NULL ,
   sex INT 1,
   address VARCHAR (255) ,
   phone VARCHAR (255),

@@ -7,7 +7,7 @@
     <result column="EMAIL" property="email" jdbcType="INTEGER" />
     <result column="SEX" property="sex" jdbcType="INTEGER" />
     <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
-    <result column="ACCOUT" property="accout" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="passowrd" jdbcType="VARCHAR" />
     <result column="PHONE" property="phone" jdbcType="VARCHAR" />
     <result column="QQ" property="qq" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
 
     <sql id="BASE_Colum">
 
-        ID,NAME,EMAIL,SEX,ADDRESS,ACCOUT,PASSWORD,PHONE,QQ
+        ID,NAME,EMAIL,SEX,ADDRESS,ACCOUNT,PASSWORD,PHONE,QQ
     </sql>
 
 
@@ -62,8 +62,8 @@
         <if test="address != null" >
             address,
         </if>
-        <if test="accout != null" >
-            accout,
+        <if test="account != null" >
+            account,
         </if>
         <if test="password != null" >
             password,
@@ -91,8 +91,8 @@
         <if test="address != null" >
             #{address},
         </if>
-        <if test="accout != null" >
-            #{accout},
+        <if test="account != null" >
+            #{account},
         </if>
         <if test="password != null" >
             #{password},
@@ -109,33 +109,36 @@
 
   <update id="updateUser" parameterType="com.test.domain.User" >
     update USER
-    <set >
-        <if test="name != null" >
-            name = #{name,jdbcType=VARCHAR},
-        </if>
-        <if test="email != null" >
-            email = #{email,jdbcType=VARCHAR},
-        </if>
-        <if test="sex != null" >
-            sex = #{sex,jdbcType=VARCHAR},
-        </if>
-        <if test="address != null" >
-            address = #{address,jdbcType=VARCHAR},
-        </if>
-        <if test="accout != null" >
-            accout = #{accout,jdbcType=VARCHAR},
-        </if>
-        <if test="password != null" >
-            password = #{password,jdbcType=VARCHAR},
-        </if>
-        <if test="phone != null" >
-            phone = #{phone,jdbcType=VARCHAR},
-        </if>
-        <if test="qq != null" >
-            qq = #{qq,jdbcType=VARCHAR},
-        </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
+    SET
+      <trim  suffixOverrides="," >
+          <if test="name != null" >
+              name = #{name},
+          </if>
+          <if test="email != null" >
+              email = #{email},
+          </if>
+          <if test="sex != null" >
+              sex = #{sex},
+          </if>
+          <if test="address != null" >
+              address=#{address},
+          </if>
+          <if test="account != null" >
+              account=#{account},
+          </if>
+          <if test="password != null" >
+              password=#{password},
+          </if>
+          <if test="phone != null" >
+              phone=#{phone},
+          </if>
+          <if test="qq != null" >
+              qq= #{qq}
+          </if>
+
+      </trim>
+
+    where ID = #{id}
   </update>
 
 

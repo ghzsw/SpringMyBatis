@@ -23,6 +23,8 @@ public class UserServiceImpl implements Iservice{
 
     @Override
     public int insert(User user) {
+
+
        return userMapper.insert(user);
     }
 
@@ -44,5 +46,9 @@ public class UserServiceImpl implements Iservice{
     @Override
     public int deleteByUser(User user) {
         return userMapper.deleteByPrimaryKey(user.getId());
+    }
+
+    public UserMapper getUserMapper() {
+        return userMapper;
     }
 }

@@ -26,12 +26,11 @@ public class UserServiceTest {
         /*name VARCHAR (255) NOT NULL,
         email VARCHAR (255) NOT NULL,
         password VARCHAR (255) NOT NULL ,
-        accout VARCHAR (255) NOT NULL ,*/
+        account VARCHAR (255) NOT NULL ,*/
         User user = new User();
         user.setId("ss");
         user.setName("zsw");
-        user.setAccout("zsw");
-        user.setAccout("zsw");
+        user.setAccount("zsw");
         user.setPassword("zsw");
         user.setEmail("12@sina.com");
 

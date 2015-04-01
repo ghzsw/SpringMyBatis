@@ -10,7 +10,7 @@ public class User {
     private String id;
     private String name;//真实姓名
     private String email;//邮箱
-    private String accout;//账户
+    private String account;//账户
     private String address;//联系地址
     private String password;//密码
     private String phone;//手机号
@@ -41,12 +41,12 @@ public class User {
         this.email = email;
     }
 
-    public String getAccout() {
-        return accout;
+    public String getAccount() {
+        return account;
     }
 
-    public void setAccout(String accout) {
-        this.accout = accout;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getAddress() {
