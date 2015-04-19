@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <script src="pages/common/common_ref_js.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" data-theme="a">
+    <div data-role="header" align="center"><h2>登录页面</h2></div>
+    <div role="main" class="ui-content">
+        <form action="/SpringMybatis/j_spring_security_check" method="post">.
+
+            <!--<input type="hidden" name="_csrf" value=""/>-->
+            <div class="ui-field-contain">
+                <label for="username">帐号:</label>
+                <input name="username" id="username" value="" placeholder="请输入帐号名称" type="text">
+            </div>
+
+            <div class="ui-field-contain">
+                <label for="username">密码:</label>
+                <input data-clear-btn="true" name="password" id="password" placeholder="请输入密码名称" value="" autocomplete="off" type="password">
+            </div>
+
+            <!--ui-input-btn ui-btn ui-corner-all ui-shadow-->
+            <div class="ui-input-btn ui-btn ui-corner-all ui-shadow ui-btn-b">
+                登录
+                <input data-enhanced="true" value="Input" type="submit">
+            </div>
+
+
+
+        </form>
+
+
+    </div>
+    <div data-role="footer">
+
+</div>
+    </div>
+</body>
+</html>

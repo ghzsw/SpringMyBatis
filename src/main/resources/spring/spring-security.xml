@@ -1,0 +1,55 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		   http://www.springframework.org/schema/security
+		   http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <http use-expressions="true">
+        <intercept-url pattern="/login.do" access="permitAll()"/>
+        <intercept-url pattern="/error400.do" access="permitAll()"/>
+        <intercept-url pattern="/*.do" access="hasRole('ROLE_USER')" />
+
+
+        <form-login login-page="/login"
+                    default-target-url="/index.do"
+                    always-use-default-target="true"
+                    authentication-failure-url="/error400.do"
+                    username-parameter="username"
+                    password-parameter="password"
+                />
+        <csrf disabled="true"/>
+    </http>
+
+
+    <beans:bean id="favorityJDBCImpl" class="com.test.service.security.FavorityJDBCImpl"></beans:bean>
+
+    <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>
+
+    <beans:bean id="daoAuthenticationProvider"
+                class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="favorityJDBCImpl" ></beans:property>
+        <beans:property name="passwordEncoder" ref="bCryptPasswordEncoder"></beans:property>
+    </beans:bean>
+
+
+    <beans:bean id="anonymousProvider"
+                class="org.springframework.security.authentication.AnonymousAuthenticationProvider">
+        <beans:constructor-arg name="key" value="SomeUniqueKeyForThisApplication" />
+    </beans:bean>
+
+    <beans:bean id="authenticationManager"
+          class="org.springframework.security.authentication.ProviderManager">
+        <beans:constructor-arg name="providers" >
+            <beans:list>
+                <beans:ref bean="daoAuthenticationProvider"/>
+                <beans:ref bean="anonymousProvider"/>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+
+
+</beans:beans>

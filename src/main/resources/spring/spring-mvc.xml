@@ -24,8 +24,10 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         </property>
     </bean>
 
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		  p:prefix="/" p:suffix=".html" />
+
 
 
 </beans>

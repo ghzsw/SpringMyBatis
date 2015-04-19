@@ -5,20 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by zsw on 15-4-1.
- * 首页
+ * Created by zsw on 15-4-7.
  */
 @Controller
-public class IndexController {
+public class ErrorController {
 
-
-
-
-    @RequestMapping(value = "/index.do",method = RequestMethod.GET)
-    public String index(){
-        return "index";
+    @RequestMapping(value = "/error400.do",method = RequestMethod.GET)
+    public String error400(){
+        return "/pages/common/pages/error400";
     }
-
-
 
 }

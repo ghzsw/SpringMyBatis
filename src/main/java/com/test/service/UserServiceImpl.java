@@ -3,8 +3,10 @@ package com.test.service;
 import com.test.dao.UserMapper;
 import com.test.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,10 +23,12 @@ public class UserServiceImpl implements Iservice{
         this.userMapper = userMapper;
     }
 
+    @Resource(mappedName = "bCryptPasswordEncoder")
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public int insert(User user) {
-
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
        return userMapper.insert(user);
     }
 
