@@ -17,6 +17,8 @@ public class User {
     private String qq;//qq号码
     private int sex;//性别
 
+    public User() {}
+
     public User(String name) {
         this.name = name;
     }

@@ -23,7 +23,7 @@ public class UserServiceImpl implements Iservice{
         this.userMapper = userMapper;
     }
 
-    @Resource(mappedName = "bCryptPasswordEncoder")
+    @Resource(name = "bCryptPasswordEncoder")
     private PasswordEncoder passwordEncoder;
 
     @Override
